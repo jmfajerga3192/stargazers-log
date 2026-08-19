@@ -1,10 +1,33 @@
-fetch("events.json")
-  .then((response) => response.json())
-  .then((events) => {
-    const list = document.querySelector("#starred");
-    events.forEach((event) => {
-      const item = document.createElement("li");
-      item.textContent = `${event.name} — starred ${event.starred}`;
-      list.appendChild(item);
+
+// ========================================
+// Mobile Navigation
+// ========================================
+
+const menuToggle = document.getElementById("menuToggle");
+const navigation = document.querySelector("nav");
+
+menuToggle.addEventListener("click", () => {
+    navigation.classList.toggle("active");
+});
+
+
+// Close mobile menu after clicking a link
+
+const navigationLinks = document.querySelectorAll("nav a");
+
+navigationLinks.forEach(link => {
+
+    link.addEventListener("click", () => {
+        navigation.classList.remove("active");
     });
-  });
+
+});
+
+
+// ========================================
+// Dynamic Footer Year
+// ========================================
+
+const yearElement = document.getElementById("year");
+
+yearElement.textContent = new Date().getFullYear();
